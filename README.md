@@ -44,6 +44,7 @@ Other
 
 <!-- ----------------------- -->
 [Yahoo](https://www.yahoo.com/)
-
+[BootStrap](https://getbootstrap.com/)
+[Webpage layout model](https://drive.google.com/file/d/1o9OZspW0OA-BawXNvo9zb7Yx2sYju6eq/view?usp=sharing)
 
 
