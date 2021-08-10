@@ -43,7 +43,6 @@ Other
 ### Recources
 
 <!-- ----------------------- -->
-[link](url)
 [Yahoo](https://www.yahoo.com/)
 
 
