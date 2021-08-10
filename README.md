@@ -43,8 +43,11 @@ Other
 ### Recources
 
 <!-- ----------------------- -->
-[Yahoo](https://www.yahoo.com/)
+[Unsplash](https://unsplash.com/s/photos/food)
+
 [BootStrap](https://getbootstrap.com/)
+
 [Webpage layout model](https://drive.google.com/file/d/1o9OZspW0OA-BawXNvo9zb7Yx2sYju6eq/view?usp=sharing)
 
+List APIs used here for Recipe and Drink
 
