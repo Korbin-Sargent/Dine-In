@@ -6,12 +6,28 @@ searchButton.addEventListener("click", () => {
   sendApiRequest();
 });
 
+// var type = $(this).attr("data-type");
+// var queryURL =
+//   "https://api.edamam.com/search?q=pizza&app_id=e01c42d8&app_key=19a34826099c7e0c9666127afe12981b";
+// console.log(queryURL);
+
+// // Grabbing our API results
+// $.ajax({
+//   url: queryURL,
+//   method: "GET",
+// }).then(function (response) {
+//   $(".title").text("Recipe: " + response.hits[0].recipe.label);
+//   $(".img").attr("src", response.hits[0].recipe.image);
+//   $(".ingredients").text(response.hits[0].recipe.ingredientLines);
+// });
+
 // An asynchronous function to fetch data from API
+
 async function sendApiRequest() {
   let APP_ID = "f5ce3119";
   let APP_KEY = "8070b4534587b181333e25bd3b8eb54b";
   let response = await fetch(
-    "https://api.edamam.com/api/recipes/v2?type=public&q=pizza&app_id=f5ce3119&app_key=8070b4534587b181333e25bd3b8eb54b&imageSize=REGULAR&random=true&field=uri&field=label&field=image&field=source&field=url&field=ingredientLines&field=ingredients"
+    "https://api.edamam.com/api/recipes/v2?type=public&pizza=all&app_id=f5ce3119&app_key=8070b4534587b181333e25bd3b8eb54b&imageSize=REGULAR&random=true&field=uri&field=label&field=image&field=source&field=url&field=ingredientLines&field=ingredients"
   );
   console.log(response);
   let data = await response.json();
@@ -22,7 +38,7 @@ async function sendApiRequest() {
 // Function that does something with the data received from the API.  The name of the function should be customized to whatever you are doing
 function useApiData(element) {
   let menuItem = "";
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 1; i++) {
     menuItem =
       menuItem +
       `
@@ -31,10 +47,10 @@ function useApiData(element) {
       <div class="card-body">
           <h5 class="card-title">${element.hits[i].recipe.label}</h5>
           <p class="card-text">${element.hits[i].recipe.source}</p>
-          <a href="${element.hits[i].recipe.source}" class="btn btn-primary">Go somewhere</a>
+          <a href="${element.hits[i].recipe.url}" class="btn btn-primary">Go somewhere</a>
       </div>
   </div>
   `;
   }
-  document.querySelector(".container-fluid").innerHTML = menuItem;
+  document.querySelector(".container").innerHTML = menuItem;
 }
