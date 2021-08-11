@@ -5,7 +5,7 @@
 
 As new developers we were assigned to create a website that utilized Third Party API's.
 Our project is a recipe and drink generator biased on filtered requirements/requests from the user. 
-We had two possible topics for this project, the other being an API that used NASA's info to determine meteor shows but decided that was perhaps too ambitious for our first group project. 
+We had two possible topics for this project, the other being an API that used NASA's info to determine meteorshowers but decided that was perhaps too ambitious for our first group project. THe user can filter a random recipe generator with 
 
 ## Requirements
 
