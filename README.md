@@ -3,9 +3,9 @@
 
 ## Group Project 1
 
-As new developers we are assigned to create a website that utilized Third Party API's.
-Our project is a recipe and drink generator, baised on a filtered requirements from the user. 
-We had two topics for this project, the other was a API that used NASA's info to determine meteor shows but decided that was an intense for the goal of it. 
+As new developers we were assigned to create a website that utilized Third Party API's.
+Our project is a recipe and drink generator biased on filtered requirements/requests from the user. 
+We had two possible topics for this project, the other being an API that used NASA's info to determine meteor shows but decided that was perhaps too ambitious for our first group project. 
 
 ## Requirements
 
@@ -28,10 +28,10 @@ Must be interactive (accept and respond to user input.)
 ## Troubleshooting
 
 <!-- ----------------------- -->
-The first step of this project was to visually agree upon a layout to acheive the rrequirements for the website.
-We first created the layout by using the Draw.io which helped us visually see what we can do with our knowlege
-on API's and make the JS work along with the html. This gave us a better understanding on what was possible and time
-mange us the best way possible. 
+The first step of this project was to visually agree upon a layout to achieve the requirements for the website.
+We started creating the layout by using the Draw.io which helped us visually see what we can do with our knowledge
+on API's and make the JS work along with the html. This gave us a better understanding of what was possible and how to best manage our time.
+
 
 
 Second
