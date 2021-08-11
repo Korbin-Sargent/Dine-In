@@ -1,10 +1,10 @@
 let searchButton = document.querySelector("#search");
 
 // Add an event listener to the button that runs the function sendApiRequest when it is clicked
-searchButton.addEventListener("click", () => {
-  console.log("buton pressed");
-  sendApiRequest();
-});
+// searchButton.addEventListener("click", () => {
+//   console.log("buton pressed");
+//   sendApiRequest();
+// });
 
 // var type = $(this).attr("data-type");
 // var queryURL =

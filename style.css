@@ -94,4 +94,33 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: row-reverse;
 }
+
+.dark {
+  background-color: #243447;
+  height: 100vh;
+  color: #bebebe;
+}
+
+.dark li a {
+  color: #bebebe;
+}
+
+.dark li a:hover {
+  background-color: #111;
+}
+
+/* Light Mode */
+.light {
+  background-color: #f0ead6;
+  color: black;
+  height: 100vh;
+}
+
+.light li a {
+  color: black;
+}
+
+.light li a:hover {
+  background-color: rgb(29, 128, 210);
+}
 /* End - Toggle for light/Dark */
