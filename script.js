@@ -1,56 +1,39 @@
-let searchButton = document.querySelector("#search");
+const searchForm = document.querySelector("form");
+const searchResultDiv = document.querySelector(".search-result");
+const container = document.querySelector(".container");
+let searchQuery = "";
+const APP_ID = "856b26ea";
+const APP_KEY = "1dc3d844bd3d38ef0352616a21c3f14d";
 
-// Add an event listener to the button that runs the function sendApiRequest when it is clicked
-searchButton.addEventListener("click", () => {
-  console.log("buton pressed");
-  sendApiRequest();
+searchForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  searchQuery = e.target.querySelector("input").value;
+  fetchAPI();
 });
 
-// var type = $(this).attr("data-type");
-// var queryURL =
-//   "https://api.edamam.com/search?q=pizza&app_id=e01c42d8&app_key=19a34826099c7e0c9666127afe12981b";
-// console.log(queryURL);
-
-// // Grabbing our API results
-// $.ajax({
-//   url: queryURL,
-//   method: "GET",
-// }).then(function (response) {
-//   $(".title").text("Recipe: " + response.hits[0].recipe.label);
-//   $(".img").attr("src", response.hits[0].recipe.image);
-//   $(".ingredients").text(response.hits[0].recipe.ingredientLines);
-// });
-
-// An asynchronous function to fetch data from API
-
-async function sendApiRequest() {
-  let APP_ID = "f5ce3119";
-  let APP_KEY = "8070b4534587b181333e25bd3b8eb54b";
-  let response = await fetch(
-    "https://api.edamam.com/api/recipes/v2?type=public&pizza=all&app_id=f5ce3119&app_key=8070b4534587b181333e25bd3b8eb54b&imageSize=REGULAR&random=true&field=uri&field=label&field=image&field=source&field=url&field=ingredientLines&field=ingredients"
-  );
-  console.log(response);
-  let data = await response.json();
+async function fetchAPI() {
+  const baseURL = `https://api.edamam.com/search?q=${searchQuery}&app_id=${APP_ID}&app_key=${APP_KEY}&to=3`;
+  const response = await fetch(baseURL);
+  const data = await response.json();
+  generateHTML(data.hits);
   console.log(data);
-  useApiData(data);
 }
-
-// Function that does something with the data received from the API.  The name of the function should be customized to whatever you are doing
-function useApiData(element) {
-  let menuItem = "";
-  for (let i = 0; i < 1; i++) {
-    menuItem =
-      menuItem +
-      `
-      <div class="card" style="width: 18rem;">
-      <img src="${element.hits[i].recipe.image}" class="card-img-top" alt="...">
-      <div class="card-body">
-          <h5 class="card-title">${element.hits[i].recipe.label}</h5>
-          <p class="card-text">${element.hits[i].recipe.source}</p>
-          <a href="${element.hits[i].recipe.url}" class="btn btn-primary">Go somewhere</a>
+function generateHTML(results) {
+  let generatedHTML = "";
+  results.map((result) => {
+    generatedHTML += `
+    <div class="item">
+      <img src="${result.recipe.image}" alt="">
+      <div class="flex-container">
+          <h1 class="title">${result.recipe.label}</h1>
+          <a class= "view-button" href="${
+            result.recipe.url
+          }" target="_blank" >View Recipe</a>
+        </div>
+        <p class="item-data">Calories: ${result.recipe.calories.toFixed(2)}</p>
+        <p class="item-data">Health Label: ${result.recipe.healthLabels}</p>
       </div>
-  </div>
-  `;
-  }
-  document.querySelector(".container").innerHTML = menuItem;
+    `;
+  });
+  searchResultDiv.innerHTML = generatedHTML;
 }
