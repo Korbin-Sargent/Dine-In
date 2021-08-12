@@ -1,21 +1,20 @@
 * {
   box-sizing: border-box;
-  background-color: gray;
+  background-color: grey;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap");
 
 #cuttingboard {
   width: 100%;
   height: auto;
-  padding: 110px;
+  padding: 40px;
 }
 
 header {
-  font-size: 50px;
+  font-size: 100px;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  margin-top: 50px;
+  margin-top: 30px;
   display: block;
+  text-align: center;
 }
 
 img {
@@ -29,13 +28,13 @@ html {
   font-weight: 600;
 }
 section {
-  min-height: 100vh;
+  background-image: url(/pexels-photo-616484.jpeg);
+  min-height: 10vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 100px 0;
-  background-color: rgb (26, 26, 27);
+  padding: 50px 0;
 }
 .container {
   width: 90%;
