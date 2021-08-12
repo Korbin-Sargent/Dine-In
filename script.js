@@ -12,10 +12,13 @@ searchForm.addEventListener("submit", (e) => {
 });
 
 async function fetchAPI() {
-  const baseURL = `https://api.edamam.com/search?q=${searchQuery}&app_id=${APP_ID}&app_key=${APP_KEY}&to=3`;
+  const baseURL = `https://api.edamam.com/search?q=${searchQuery}&app_id=${APP_ID}&app_key=${APP_KEY}&random=true`;
   const response = await fetch(baseURL);
   const data = await response.json();
   generateHTML(data.hits);
+  // generate recipe html
+  // generate drink html
+  // call to drink api - create local variable
   console.log(data);
 }
 function generateHTML(results) {
