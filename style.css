@@ -1,9 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap");
 * {
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
+  background-color: gray;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap");
+
+#cuttingboard {
+  width: 100%;
+  height: auto;
+  padding: 110px;
+}
+
+header {
+  font-size: 50px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin-top: 50px;
+  display: block;
+}
+
 img {
   width: 100%;
   height: 100%;
