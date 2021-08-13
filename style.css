@@ -2,14 +2,17 @@
   box-sizing: border-box;
 }
 
-header {
+.navbar-brand {
+  font-size: 70px;
+}
+
+/* header {
   background-color: brown;
   text-align: center;
   font-size: 50px;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  margin-top: 50px;
   display: block;
-}
+} */
 
 img {
   width: 100%;
@@ -24,20 +27,29 @@ html {
 
 section {
   background-image: url("image.jpeg");
-  background-repeat: space;
   min-height: 100vh;
+  background-size: 100%;
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 100px 0;
+  padding: 100px;
 }
+
+#cocktail {
+  height: auto;
+  width: 100%;
+}
+
+/* #coctail image{
+  image
+} */
 
 .container {
   width: 90%;
   height: auto;
   max-width: 1200px;
   margin: 0 auto;
+  border: 5px red dotted;
+  background-color: white;
 }
 .brand {
   text-align: center;
@@ -98,6 +110,7 @@ form ion-icon {
   font-size: 1.8rem;
   font-weight: 400;
 }
+
 .view-button {
   text-decoration: none;
   text-align: center;
@@ -116,4 +129,10 @@ form ion-icon {
   font-size: 1.4rem;
   letter-spacing: 0.05rem;
   line-height: 2rem;
+}
+
+#addadrink {
+  justify-content: center;
+  height: 100vh;
+  image-rendering: crisp-edges;
 }
