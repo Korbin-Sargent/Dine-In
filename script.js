@@ -5,6 +5,8 @@ let searchQuery = "";
 const APP_ID = "856b26ea";
 const APP_KEY = "1dc3d844bd3d38ef0352616a21c3f14d";
 var button = document.getElementById("addadrink");
+const recipeCards = document.getElementById("recipeCards");
+const drinkContainer = document.getElementById("drinkContainer");
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -24,7 +26,9 @@ function generateHTML(results) {
   results.map((result) => {
     generatedHTML += `
     <div class="card" style="width: 20rem;">
-      <img src="${result.recipe.image}" class="card-img-top" alt="">
+      <img src="${
+        result.recipe.image
+      }" class="card-img-top recipeCardsImg" alt="">
       <div class="card-body">
           <h1 class="card-title">${result.recipe.label}</h1>
           <a class= "view-button" href="${
@@ -35,7 +39,9 @@ function generateHTML(results) {
       </div>
     `;
   });
-  searchResultDiv.innerHTML = generatedHTML;
+  console.log(recipeCards);
+  console.log(generatedHTML);
+  recipeCards.innerHTML = generatedHTML;
 }
 
 function addadrink() {
@@ -54,17 +60,31 @@ function addadrink() {
       displayCocktail(data);
     })
     .catch((error) => console.error("FETCH ERROR:", error));
-  function displayCocktail(data) {
-    let cocktail = data.drinks[0];
-    let cocktailDiv = document.getElementById("cocktail");
-    let cocktailName = cocktail.strDrink;
-    const heading = document.createElement("h1");
-    heading.innerText = cocktailName;
-    cocktailDiv.appendChild(heading);
-    let cocktailImg = document.createElement("img");
-    cocktailImg.src = cocktail.strDrinkThumb;
-    cocktailDiv.appendChild(cocktailImg);
-  }
+}
+
+function displayCocktail(data) {
+  drinkContainer.innerHTML = "";
+  let cocktail = data.drinks[0];
+  let cocktailDiv = document.getElementById("cocktail");
+  let cocktailName = cocktail.strDrink;
+
+  let newCocktailDiv = document.createElement("div");
+  newCocktailDiv.classList.add(["card", "cocktailCard"]);
+
+  let cocktailImg = document.createElement("img");
+  cocktailImg.src = cocktail.strDrinkThumb;
+  cocktailImg.classList.add(["card-img-top"]);
+
+  let heading = document.createElement("h1");
+  heading.innerText = cocktailName;
+  heading.classList.add(["card-title"]);
+
+  newCocktailDiv.appendChild(cocktailImg);
+  newCocktailDiv.appendChild(heading);
+
+  drinkContainer.appendChild(newCocktailDiv);
+
+  // cocktailDiv.appendChild(cocktailImg);
 }
 button.addEventListener("click", addadrink);
 
