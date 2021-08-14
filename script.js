@@ -65,7 +65,7 @@ function addadrink() {
 function displayCocktail(data) {
   drinkContainer.innerHTML = "";
   let cocktail = data.drinks[0];
-  let cocktailDiv = document.getElementById("cocktail");
+  // let cocktailDiv = document.getElementById("cocktail");
   let cocktailName = cocktail.strDrink;
 
   let newCocktailDiv = document.createElement("div");
@@ -73,7 +73,7 @@ function displayCocktail(data) {
 
   let cocktailImg = document.createElement("img");
   cocktailImg.src = cocktail.strDrinkThumb;
-  cocktailImg.classList.add(["card-img-top"]);
+  cocktailImg.classList.add(["card-img-top", "drinksCardsImg"]);
 
   let heading = document.createElement("h1");
   heading.innerText = cocktailName;

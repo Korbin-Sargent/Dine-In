@@ -141,9 +141,3 @@ form ion-icon {
   letter-spacing: 0.05rem;
   line-height: 2rem;
 }
-
-#addadrink {
-  justify-content: center;
-  height: 100vh;
-  image-rendering: crisp-edges;
-}
