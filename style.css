@@ -34,6 +34,17 @@ section {
   padding: 100px;
 }
 
+.cocktailCard {
+  width: 18rem;
+}
+.drinkCardsImg {
+  height: 400px;
+}
+
+.recipeCardsImg {
+  height: 400px;
+}
+
 #cocktail {
   height: auto;
   width: 100%;
