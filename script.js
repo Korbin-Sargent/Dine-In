@@ -7,12 +7,16 @@ const APP_KEY = "1dc3d844bd3d38ef0352616a21c3f14d";
 var button = document.getElementById("addadrink");
 const recipeCards = document.getElementById("recipeCards");
 const drinkContainer = document.getElementById("drinkContainer");
-const previousRecipeSearches = document.getElementById("previousRecipeSearches");
+const previousRecipeSearches = document.getElementById(
+  "previousRecipeSearches"
+);
+// let previousSearches = JSON.parse(localStorage.getItem(“Test1”)) || [];
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   searchQuery = e.target.querySelector("input").value;
   fetchAPI();
+  // saveSearch(searchQuery);
 });
 async function fetchAPI() {
   const baseURL = `https://api.edamam.com/search?q=${searchQuery}&app_id=${APP_ID}&app_key=${APP_KEY}&to=3`;
@@ -20,6 +24,7 @@ async function fetchAPI() {
   const data = await response.json();
   generateHTML(data.hits);
   console.log(data);
+  saveSearch(searchQuery);
 }
 
 function generateHTML(results) {
@@ -91,55 +96,48 @@ function displayCocktail(data) {
 }
 button.addEventListener("click", addadrink);
 
-
-let previousSearches = JSON.parse(localStorage.getItem(“searchResults”)) || [];
+let previousSearches = JSON.parse(localStorage.getItem("searchResults")) || [];
+console.log(previousSearches);
 // Save a Search
-function saveSearch (searchTerm) {
-  if (previousSearches.indexOf(searchTerm) == -1) {
-    previousSearches.unshift(searchTerm);
+function saveSearch() {
+  console.log(previousSearches);
+  // console.log(searchQuery);
+  if (previousSearches.indexOf(searchQuery) == -1) {
+    previousSearches.unshift(searchQuery);
     if (previousSearches.length > 3) {
-      previousSearchess.pop();
+      previousSearches.pop();
     }
-    localStorage.setItem(“searchResults”, JSON.stringify(previousSearches));
+    localStorage.setItem("searchResults", JSON.stringify(previousSearches));
   }
-showPreviousSearches();
+  showPreviousSearches(previousSearches);
 }
 // Display search - interface/UI
-function showPreviousSearches() {
-  console.info(previousSearches);
-
-
-function generateRecipeHTML(previousSearches) {
+function showPreviousSearches(previousSearchesData) {
   let generatedRecipeHTML = "";
-  results.map(() => {
+  // console.log(previousSearches);
+  previousSearchesData.map((previousSearch) => {
+    console.log(previousSearch);
     generatedRecipeHTML += `
-    <div class="card" style="width: 20rem;">
-      <img src="${
-        result.recipe.image
-      }" class="card-img-top recipeCardsImg" alt="">
-      <div class="card-body">
-          <h1 class="card-title">${result.recipe.label}</h1>
-          <a class= "btn btn-success" href="${
-            result.recipe.url
-          }" target="_blank" >View Recipe</a>
-        </div>
-        <p class="card-text textStyling">Calories: ${result.recipe.calories.toFixed(
-          2
-        )}</p>
-      </div>
-    `;
+          <div class="btn-group-vertical">
+          <button type="button" class="btn btn-secondary">${previousSearch}</button>
+          </div>`;
+    //       <h1 class="card-title">${result.recipe.label}</h1>
+
+    //       result.recipe.url
+    //     }" target="_blank" >View Recipe</a>
+    //   </div>
+    //   <p class="card-text textStyling">Calories: ${result.recipe.calories.toFixed(
+    //     2
+    //   )}</p>
+    // </div>
   });
-  console.log(recipeCards);
-  console.log(generatedHTML);
-  recipeCards.innerHTML = generatedHTML;
-
-
+  // console.log(previousSearches);
+  // console.log(generatedRecipeHTML);
+  previousRecipeSearches.innerHTML = generatedRecipeHTML;
 }
-showPreviousSearches();
-// // fires when it loads - need to link
+// showPreviousSearches();
+// fires when it loads - need to link
 // End - Local Storage Feature
-
-
 
 // Local Storage Feature
 // var previousSearches = [];
