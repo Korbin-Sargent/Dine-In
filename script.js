@@ -11,7 +11,9 @@ const drinkContainer = document.getElementById("drinkContainer");
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   searchQuery = e.target.querySelector("input").value;
-  saveSearch (searchQuery) 
+  // ADDED HERE
+  saveSearch (searchQuery)
+  // END -- ADDED HERE
   fetchAPI();
 });
 async function fetchAPI() {
@@ -117,7 +119,7 @@ $(document).on("click", ".pastSearchLink", function (e) {
 });
 // fires when it loads - need to link
 localStorage.setItem("searchResults", JSON.stringify(previousSearches));
-// End - Local Storage Feature
+
 
 
 // save a search
@@ -140,3 +142,4 @@ function loadSearch (){
 // call API
 
 }
+// End - Local Storage Feature
