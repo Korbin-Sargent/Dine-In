@@ -25,6 +25,8 @@ Must be interactive (accept and respond to user input.)
 
 <!-- ----------------------- -->
 
+![Screen Shot 2021-08-15 at 10 15 20 PM](https://user-images.githubusercontent.com/87046645/129510749-513205e8-d2e9-480d-b440-23b3ba1d7609.png)
+
 ## Recources
 
 <!-- ----------------------- -->
@@ -37,7 +39,7 @@ Must be interactive (accept and respond to user input.)
 
 <!-- List APIs used here for Recipe and Drink -->
 
-[API](API URL here)
+[API1 - Edamam ](https://api.edamam.com/search
 
 [API](API URL here)
 
@@ -66,7 +68,6 @@ friel2009@gmail.com
 Stephanie Johansson
 7steph7@gmail.com,
 linkedin.com/in/stephanie-johansson934096213,
-P: (720)314-5170
 
 Korbin Sargent
 korbinksargent@gmail.com
