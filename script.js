@@ -7,11 +7,16 @@ const APP_KEY = "1dc3d844bd3d38ef0352616a21c3f14d";
 var button = document.getElementById("addadrink");
 const recipeCards = document.getElementById("recipeCards");
 const drinkContainer = document.getElementById("drinkContainer");
+const previousRecipeSearches = document.getElementById(
+  "previousRecipeSearches"
+);
+// let previousSearches = JSON.parse(localStorage.getItem(“Test1”)) || [];
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   searchQuery = e.target.querySelector("input").value;
   fetchAPI();
+  // saveSearch(searchQuery);
 });
 async function fetchAPI() {
   const baseURL = `https://api.edamam.com/search?q=${searchQuery}&app_id=${APP_ID}&app_key=${APP_KEY}&to=3`;
@@ -19,6 +24,7 @@ async function fetchAPI() {
   const data = await response.json();
   generateHTML(data.hits);
   console.log(data);
+  saveSearch(searchQuery);
 }
 
 function generateHTML(results) {
@@ -89,6 +95,49 @@ function displayCocktail(data) {
   // cocktailDiv.appendChild(cocktailImg);
 }
 button.addEventListener("click", addadrink);
+
+let previousSearches = JSON.parse(localStorage.getItem("searchResults")) || [];
+console.log(previousSearches);
+// Save a Search
+function saveSearch() {
+  console.log(previousSearches);
+  // console.log(searchQuery);
+  if (previousSearches.indexOf(searchQuery) == -1) {
+    previousSearches.unshift(searchQuery);
+    if (previousSearches.length > 3) {
+      previousSearches.pop();
+    }
+    localStorage.setItem("searchResults", JSON.stringify(previousSearches));
+  }
+  showPreviousSearches(previousSearches);
+}
+// Display search - interface/UI
+function showPreviousSearches(previousSearchesData) {
+  let generatedRecipeHTML = "";
+  // console.log(previousSearches);
+  previousSearchesData.map((previousSearch) => {
+    console.log(previousSearch);
+    generatedRecipeHTML += `
+          <div class="btn-group-vertical">
+          <button type="button" class="btn btn-secondary">${previousSearch}</button>
+          </div>`;
+    //       <h1 class="card-title">${result.recipe.label}</h1>
+
+    //       result.recipe.url
+    //     }" target="_blank" >View Recipe</a>
+    //   </div>
+    //   <p class="card-text textStyling">Calories: ${result.recipe.calories.toFixed(
+    //     2
+    //   )}</p>
+    // </div>
+  });
+  // console.log(previousSearches);
+  // console.log(generatedRecipeHTML);
+  previousRecipeSearches.innerHTML = generatedRecipeHTML;
+}
+// showPreviousSearches();
+// fires when it loads - need to link
+// End - Local Storage Feature
 
 // Local Storage Feature
 // var previousSearches = [];
