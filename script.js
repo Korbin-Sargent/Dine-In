@@ -4,13 +4,16 @@ const container = document.querySelector(".container");
 let searchQuery = "";
 const APP_ID = "856b26ea";
 const APP_KEY = "1dc3d844bd3d38ef0352616a21c3f14d";
-var button = document.getElementById("addadrink");
+let button = document.getElementById("addadrink");
 const recipeCards = document.getElementById("recipeCards");
 const drinkContainer = document.getElementById("drinkContainer");
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   searchQuery = e.target.querySelector("input").value;
+  // ADDED HERE
+  saveSearch (searchQuery)
+  // END -- ADDED HERE
   fetchAPI();
 });
 async function fetchAPI() {
@@ -46,7 +49,7 @@ function generateHTML(results) {
 
 function addadrink() {
   // grab the element ID - remove ()
-  var drinkAPI = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+  let drinkAPI = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
   fetch(drinkAPI)
     .then((response) => {
       if (response.ok) {
@@ -88,8 +91,11 @@ function displayCocktail(data) {
 }
 button.addEventListener("click", addadrink);
 
+
+
+
 // Local Storage Feature
-var previousSearches = [];
+let previousSearches = [];
 if (previousSearches[previousSearches]) {
   const history = JSON.parse(localStorage.getItem("searchResults"));
 }
@@ -113,4 +119,27 @@ $(document).on("click", ".pastSearchLink", function (e) {
 });
 // fires when it loads - need to link
 localStorage.setItem("searchResults", JSON.stringify(previousSearches));
+
+
+
+// save a search
+function saveSearch (searchTerm) {
+  previousSearches.push(searchTerm)
+if (previousSearches.length > 3) {
+  previousSearches.shift()
+}
+localStorage.setItem("searchResults", JSON.stringify(previousSearches));
+
+}
+
+
+// restore a search
+function loadSearch (){
+// fetch the local storage, JSON.parse (turn inside out) localStorage.getItem("searchResults", JSON.stringify(previousSearches));
+// create button
+// look at value in button
+// set Global variable
+// call API
+
+}
 // End - Local Storage Feature

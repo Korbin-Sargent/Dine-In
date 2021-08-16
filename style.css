@@ -59,7 +59,8 @@ section {
   height: auto;
   max-width: 1200px;
   margin: 0 auto;
-  border: 5px red dotted;
+  border: 25px rgb(86, 133, 79);
+  border-style: groove;
   background-color: white;
 }
 .brand {
