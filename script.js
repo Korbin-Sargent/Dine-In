@@ -7,6 +7,7 @@ const APP_KEY = "1dc3d844bd3d38ef0352616a21c3f14d";
 var button = document.getElementById("addadrink");
 const recipeCards = document.getElementById("recipeCards");
 const drinkContainer = document.getElementById("drinkContainer");
+const previousRecipeSearches = document.getElementById("previousRecipeSearches");
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -89,6 +90,56 @@ function displayCocktail(data) {
   // cocktailDiv.appendChild(cocktailImg);
 }
 button.addEventListener("click", addadrink);
+
+
+let previousSearches = JSON.parse(localStorage.getItem(“searchResults”)) || [];
+// Save a Search
+function saveSearch (searchTerm) {
+  if (previousSearches.indexOf(searchTerm) == -1) {
+    previousSearches.unshift(searchTerm);
+    if (previousSearches.length > 3) {
+      previousSearchess.pop();
+    }
+    localStorage.setItem(“searchResults”, JSON.stringify(previousSearches));
+  }
+showPreviousSearches();
+}
+// Display search - interface/UI
+function showPreviousSearches() {
+  console.info(previousSearches);
+
+
+function generateRecipeHTML(previousSearches) {
+  let generatedRecipeHTML = "";
+  results.map(() => {
+    generatedRecipeHTML += `
+    <div class="card" style="width: 20rem;">
+      <img src="${
+        result.recipe.image
+      }" class="card-img-top recipeCardsImg" alt="">
+      <div class="card-body">
+          <h1 class="card-title">${result.recipe.label}</h1>
+          <a class= "btn btn-success" href="${
+            result.recipe.url
+          }" target="_blank" >View Recipe</a>
+        </div>
+        <p class="card-text textStyling">Calories: ${result.recipe.calories.toFixed(
+          2
+        )}</p>
+      </div>
+    `;
+  });
+  console.log(recipeCards);
+  console.log(generatedHTML);
+  recipeCards.innerHTML = generatedHTML;
+
+
+}
+showPreviousSearches();
+// // fires when it loads - need to link
+// End - Local Storage Feature
+
+
 
 // Local Storage Feature
 // var previousSearches = [];
