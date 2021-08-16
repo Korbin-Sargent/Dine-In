@@ -90,29 +90,24 @@ function displayCocktail(data) {
 }
 button.addEventListener("click", addadrink);
 
-// Local Storage Feature
-// var previousSearches = [];
-// if (previousSearches[previousSearches]) {
-//   const history = JSON.parse(localStorage.getItem("searchResults"));
-// }
-// if (previousSearches.indexOf(search) == -1) {
-//   previousSearches.unshift(search);
-//   if (previousSearches.length > 3) {
-//     previousSearches.pop();
-//   }
-//   localStorage.setItem("searchResults", JSON.stringify(previousSearches));
-// }
-// function drawpreviousSearches() {
-//   if (previousSearches.length) {
-//     var html = previousSearchesTemplate({ search: previousSearches });
-//     $("#previousSearches").html(html);
-//   }
-// }
-// $(document).on("click", ".pastSearchLink", function (e) {
-//   e.preventDefault();
-//   var search = $(this).text();
-//   doSearch(search);
-// });
+// LOCAL STORAGE
+let previousSearches = JSON.parse(localStorage.getItem("searchResults")) || [];
+// Save a Search
+function saveSearch (searchTerm) {
+  if (previousSearches.indexOf(searchTerm) == -1) {
+    previousSearches.unshift(searchTerm);
+    if (previousSearches.length > 3) {
+      previousSearchess.pop();
+    }
+    localStorage.setItem("searchResults", JSON.stringify(previousSearches));
+  }
+showPreviousSearches();
+}
+// Display search - interface/UI
+function showPreviousSearches() {
+  console.info(previousSearches);
+}
+showPreviousSearches();
 // // fires when it loads - need to link
-// localStorage.setItem("searchResults", JSON.stringify(previousSearches));
-// // End - Local Storage Feature
+
+// End - Local Storage Feature
