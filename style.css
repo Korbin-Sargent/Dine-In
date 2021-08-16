@@ -3,6 +3,7 @@
 }
 
 .navbar-brand {
+  font-family: "Cherry Cream Soda", cursive;
   font-size: 70px;
 }
 
@@ -20,7 +21,7 @@ img {
   object-fit: cover;
 }
 html {
-  font-family: "Nunito";
+  /* font-family: "Nunito"; */
   font-size: 12px;
   font-weight: 600;
 }
@@ -37,22 +38,14 @@ section {
 .cocktailCard {
   width: 18rem;
 }
+
 .drinkCardsImg {
-  height: 400px;
+  height: auto;
 }
 
 .recipeCardsImg {
-  height: 400px;
-}
-
-#cocktail {
   height: auto;
-  width: 100%;
 }
-
-/* #coctail image{
-  image
-} */
 
 .container {
   width: 90%;
@@ -63,8 +56,10 @@ section {
   border-style: groove;
   background-color: white;
 }
+
 .brand {
   text-align: center;
+  font-family: "Times New Roman", Times, serif;
   font-size: 4rem;
   color: rgb(155, 20, 20);
   margin-bottom: 30px;
@@ -128,7 +123,7 @@ form ion-icon {
   text-align: center;
   width: 130px;
   padding: 10px 0;
-  background-color: grey;
+  background-color: green;
   color: whitesmoke;
   font-size: 1.4rem;
   margin-top: 20px;
@@ -138,7 +133,19 @@ form ion-icon {
   color: whitesmoke;
   display: block;
   margin-top: 10px;
-  font-size: 1.4rem;
+  font-size: 2.4rem;
   letter-spacing: 0.05rem;
   line-height: 2rem;
+}
+
+.btn {
+  font-size: medium;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+}
+
+.textStyling {
+  font-size: 19px;
+  text-align: center;
 }
