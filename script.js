@@ -1,7 +1,6 @@
 const searchForm = document.querySelector("form");
 const searchResultDiv = document.querySelector(".search-result");
 const container = document.querySelector(".container");
-let searchQuery = "";
 const APP_ID = "856b26ea";
 const APP_KEY = "1dc3d844bd3d38ef0352616a21c3f14d";
 var button = document.getElementById("addadrink");
@@ -10,21 +9,34 @@ const drinkContainer = document.getElementById("drinkContainer");
 const previousRecipeSearches = document.getElementById(
   "previousRecipeSearches"
 );
+let searchInput = document.getElementById("searchInput");
+
+previousRecipeSearches.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  if (e.target.matches(".searchButton")) {
+    let searchTextValue = e.target.dataset.value;
+    console.log(searchTextValue);
+    searchInput.value = searchTextValue;
+    fetchAPI(searchTextValue);
+  }
+});
+
 // let previousSearches = JSON.parse(localStorage.getItem(“Test1”)) || [];
 
 searchForm.addEventListener("submit", (e) => {
+  let searchQuery = e.target.querySelector("input").value;
   e.preventDefault();
-  searchQuery = e.target.querySelector("input").value;
-  fetchAPI();
+  fetchAPI(searchQuery);
   // saveSearch(searchQuery);
 });
-async function fetchAPI() {
-  const baseURL = `https://api.edamam.com/search?q=${searchQuery}&app_id=${APP_ID}&app_key=${APP_KEY}&to=3`;
+async function fetchAPI(searchValue) {
+  const baseURL = `https://api.edamam.com/search?q=${searchValue}&app_id=${APP_ID}&app_key=${APP_KEY}&to=3`;
   const response = await fetch(baseURL);
   const data = await response.json();
   generateHTML(data.hits);
   console.log(data);
-  saveSearch(searchQuery);
+  saveSearch(searchValue);
 }
 
 function generateHTML(results) {
@@ -96,10 +108,11 @@ function displayCocktail(data) {
 }
 button.addEventListener("click", addadrink);
 
-let previousSearches = JSON.parse(localStorage.getItem("searchResults")) || [];
+const previousSearches =
+  JSON.parse(localStorage.getItem("searchResults")) || [];
 console.log(previousSearches);
 // Save a Search
-function saveSearch() {
+function saveSearch(searchQuery) {
   console.log(previousSearches);
   // console.log(searchQuery);
   if (previousSearches.indexOf(searchQuery) == -1) {
@@ -119,8 +132,9 @@ function showPreviousSearches(previousSearchesData) {
     console.log(previousSearch);
     generatedRecipeHTML += `
           <div class="btn-group-vertical">
-          <button type="button" class="btn btn-secondary">${previousSearch}</button>
+          <button type="button" class="btn btn-secondary searchButton" data-value = "${previousSearch}">${previousSearch}</button>
           </div>`;
+
     //       <h1 class="card-title">${result.recipe.label}</h1>
 
     //       result.recipe.url
