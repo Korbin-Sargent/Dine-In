@@ -22,8 +22,6 @@ previousRecipeSearches.addEventListener("click", function (e) {
   }
 });
 
-// let previousSearches = JSON.parse(localStorage.getItem(“Test1”)) || [];
-
 searchForm.addEventListener("submit", (e) => {
   let searchQuery = e.target.querySelector("input").value;
   e.preventDefault();
@@ -85,7 +83,6 @@ function addadrink() {
 function displayCocktail(data) {
   drinkContainer.innerHTML = "";
   let cocktail = data.drinks[0];
-  // let cocktailDiv = document.getElementById("cocktail");
   let cocktailName = cocktail.strDrink;
 
   let newCocktailDiv = document.createElement("div");
@@ -103,8 +100,6 @@ function displayCocktail(data) {
   newCocktailDiv.appendChild(heading);
 
   drinkContainer.appendChild(newCocktailDiv);
-
-  // cocktailDiv.appendChild(cocktailImg);
 }
 button.addEventListener("click", addadrink);
 
@@ -114,7 +109,6 @@ console.log(previousSearches);
 // Save a Search
 function saveSearch(searchQuery) {
   console.log(previousSearches);
-  // console.log(searchQuery);
   if (previousSearches.indexOf(searchQuery) == -1) {
     previousSearches.unshift(searchQuery);
     if (previousSearches.length > 3) {
@@ -127,55 +121,11 @@ function saveSearch(searchQuery) {
 // Display search - interface/UI
 function showPreviousSearches(previousSearchesData) {
   let generatedRecipeHTML = "";
-  // console.log(previousSearches);
   previousSearchesData.map((previousSearch) => {
-    console.log(previousSearch);
     generatedRecipeHTML += `
           <div class="btn-group-vertical">
           <button type="button" class="btn btn-secondary searchButton" data-value = "${previousSearch}">${previousSearch}</button>
           </div>`;
-
-    //       <h1 class="card-title">${result.recipe.label}</h1>
-
-    //       result.recipe.url
-    //     }" target="_blank" >View Recipe</a>
-    //   </div>
-    //   <p class="card-text textStyling">Calories: ${result.recipe.calories.toFixed(
-    //     2
-    //   )}</p>
-    // </div>
   });
-  // console.log(previousSearches);
-  // console.log(generatedRecipeHTML);
   previousRecipeSearches.innerHTML = generatedRecipeHTML;
 }
-// showPreviousSearches();
-// fires when it loads - need to link
-// End - Local Storage Feature
-
-// Local Storage Feature
-// var previousSearches = [];
-// if (previousSearches[previousSearches]) {
-//   const history = JSON.parse(localStorage.getItem("searchResults"));
-// }
-// if (previousSearches.indexOf(search) == -1) {
-//   previousSearches.unshift(search);
-//   if (previousSearches.length > 3) {
-//     previousSearches.pop();
-//   }
-//   localStorage.setItem("searchResults", JSON.stringify(previousSearches));
-// }
-// function drawpreviousSearches() {
-//   if (previousSearches.length) {
-//     var html = previousSearchesTemplate({ search: previousSearches });
-//     $("#previousSearches").html(html);
-//   }
-// }
-// $(document).on("click", ".pastSearchLink", function (e) {
-//   e.preventDefault();
-//   var search = $(this).text();
-//   doSearch(search);
-// });
-// // fires when it loads - need to link
-// localStorage.setItem("searchResults", JSON.stringify(previousSearches));
-// // End - Local Storage Feature
